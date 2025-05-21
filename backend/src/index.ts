@@ -5,7 +5,6 @@ import mongoose from "mongoose";
 import authRoute from "./routes/authRoute";
 import taskRoute from "./routes/taskRoute";
 import bodyParser from "body-parser";
-import path from "path";
 
 dotenv.config();
 
@@ -22,7 +21,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: ["http://localhost:5174"],
+    origin: ["http://localhost:5173"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
