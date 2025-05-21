@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - "5050:5050"
+    environment:
+      PORT: 5050
+      NODE_ENV: production
+      MONGO_URL: mongodb://mongo:27017/tasks
+      JWT_SECRET: Hello_Secret_Key
+    volumes:
+      - ./:/app
+    depends_on:
+      - mongo
+    restart: always
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    restart: always
+
+volumes:
+  mongo_data:
