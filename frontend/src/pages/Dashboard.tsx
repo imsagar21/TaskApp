@@ -57,7 +57,6 @@ const Dashboard: React.FC = () => {
       } else {
         await createTaskMutation.mutateAsync(task);
       }
-      alert("Task saved successfully");
       setTask({
         title: "",
         description: "",
@@ -91,7 +90,7 @@ const Dashboard: React.FC = () => {
       title: task.title,
       description: task.description,
       priority: task.priority,
-      dueDate: task.dueDate || "",
+      dueDate: task.dueDate,
       status: task.status || "active",
       id: task.id,
       _id: task._id,
@@ -116,7 +115,6 @@ const Dashboard: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center">
       <div className="bg-white rounded-lg shadow max-w-5xl w-full mt-10 p-6 flex flex-col md:flex-row gap-8">
-        {/* Create Task (Left) */}
         <div className="md:w-1/2 w-full">
           <h2 className="text-2xl font-bold mb-4 text-blue-700 text-center md:text-left">
             Create New Task
@@ -128,7 +126,6 @@ const Dashboard: React.FC = () => {
             handleSubmit={handleSubmit}
           />
         </div>
-        {/* My Tasks (Right) */}
         <div className="md:w-1/2 w-full">
           <h3 className="text-xl font-bold mb-4 text-blue-700 text-center md:text-left">
             My Tasks

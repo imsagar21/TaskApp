@@ -14,7 +14,6 @@ const TaskForm: React.FC<TaskFormProps> = ({
     dueDate: "",
   });
 
-  // Client-side validation
   const validate = () => {
     const newWarnings = { title: "", description: "", dueDate: "" };
     let hasError = false;
@@ -80,7 +79,9 @@ const TaskForm: React.FC<TaskFormProps> = ({
       <input
         type="date"
         name="dueDate"
-        value={task.dueDate}
+        value={
+          task.dueDate ? new Date(task.dueDate).toISOString().split("T")[0] : ""
+        }
         onChange={handleChange}
         min={new Date().toISOString().split("T")[0]}
         className="p-2 rounded border border-gray-300"
